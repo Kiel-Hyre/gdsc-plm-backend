@@ -77,26 +77,24 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-04-CRUD
+## BACKEND-05-TRANSFER
+- Just transfer DJANGO views to DRF Views
+- Instead of HttpResponse, Response from drf library was used
+- Instead of Forms , serializers was used
 
-- Update your model by adding field to Action, description
-```
-class Action(models.Model):
-    description = models.CharField(max_length=255)
-```
+- Serializer can be used as
+    - Initial Validator
+    - Output of serialized object, which was necessary for output response
 
-- Create CRUD Views, refer to views.py
-- Create CRUD URLS in accordance to the CRUD views
-- Create CRUD Templates
-- Some CRUD such as Create and Update needed forms
+- DIY
+ - Conversion to Model Serializer
+ - Exploring create, update, save of serializer
+ - api_view() of delete, post, put  **NOTE in my case it was a bug**
 
-- In such create a forms.py
-- There are two ways to validate data via forms
-    - Normal forms
-    - Model Forms
-- [Read here](https://docs.djangoproject.com/en/3.2/topics/forms/)
+- We created another app to just had a comparison in the regular Django
+- If you want to really do the conversion (which is super great if you do that),
+  feel free to change it :) (on your end)
 
-- This has been a long topic :)
 
 ### TADA!
 
