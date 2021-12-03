@@ -77,23 +77,8 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-05-TRANSFER
-- Just transfer DJANGO views to DRF Views
-- Instead of HttpResponse, Response from drf library was used
-- Instead of Forms , serializers was used
-
-- Serializer can be used as
-    - Initial Validator
-    - Output of serialized object, which was necessary for output response
-
-- DIY
- - Conversion to Model Serializer
- - Exploring create, update, save of serializer
- - api_view() of delete, post, put  **NOTE in my case it was a bug**
-
-- We created another app to just had a comparison in the regular Django
-- If you want to really do the conversion (which is super great if you do that),
-  feel free to change it :) (on your end)
+## BACKEND-06-CLASS-BASED-VIEWS
+- Transfer all function based to a class based one!
 
 
 ### TADA!
