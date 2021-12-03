@@ -76,3 +76,77 @@ To create in the same base of gdsc-plm-backend do:
 ```
     python3 manage.py runserver (port) # default is 8000
 ```
+
+## BACKEND-01-HELLO WORLD
+
+- Create your app
+In main directory (gdsc-plm-backend/)
+
+```
+django-admin startapp hello
+```
+
+- It should contain the basics files of an app
+```
+e.g
+hello\
+    migrations\
+    admin.py
+    ...etc
+```
+
+- Put your app in the settings.py INSTALLED_APPS
+```
+INSTALLED_APPS = [
+    ...
+    hello
+]
+```
+
+- Create a urls.py on your hello folder
+- It should contains this
+```
+from django.urls import path
+
+urlpatterns = [
+    # put your routes here
+]
+
+```
+
+- To be recognized hello app urls it should be detected in the urls.py on the config folder
+- It can be done like this
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hello/', include('hello.urls')) # this includes all the routes provided by the hello app
+]
+```
+
+- Now we had our routes file prepared, lets make some views
+- Create a view function named hello
+```
+from django.http import HttpResponse
+
+def hello(request):
+    return HttpResponse("Hello World")
+```
+
+- Create a route based on that view
+```
+hello/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('index/', views.hello, name='hello-index')
+]
+```
+
+### TADA YOUR FIRST APP!
+
+- Run your server
