@@ -77,49 +77,32 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-02-HELLO-WORLD
+## BACKEND-03-MODELS
 
-- In the [previous](https://github.com/Kiel-Hyre/gdsc-plm-backend/tree/backend-01-hello-world), we learn about basic routing
+- Create a model named Action in models.py
 ```
-from django.http import HttpResponse
-
-def hello(request):
-    return HttpResponse("Hello World")
+class Action(models.Model):
+    text = models.CharField(max_length=255)
 ```
 
-- Now we modify it to render a template
+- Do a makemigrations
+- Do a migrate
 
-- In the hello folder, create a new folder name templates
-- This will contain all the html files you will use on the app
-- Create a hello.html file
+
+- Register the model in the admin
 ```
-    hello\
-        templates\
-            hello.html
+admin.site.register(models.Admin)
 ```
 
-- In the views
-- import the [render](https://docs.djangoproject.com/en/3.2/topics/http/shortcuts/#django.shortcuts.render) function from django.shorcuts
-- change the method of the hello function
+- Two ways to add items in the model
+    - command line
+    - through admin
 
+- In the views.py, change the to_do static data to:
 ```
-def hello(request):
-    return render(request, 'hello.html')
+    'to_do': models.Activity.objects.all()
 ```
-
-- put some code in your html file
-```
-    <h1>TO DO APP</h1>
-```
-
-- run server for testing
-- It should show the TO DO APP
-
-### More versioning
-- Static datas
-- By arguments render function had optional argument called context
-- Context is empty dictionary by default, once filled up, those data can be used in the template through template tags
-
+- This returns a list of object in the template therefore instead of {{ t }} do {{ t.text }}
 
 ### TADA!
 
