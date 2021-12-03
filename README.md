@@ -77,32 +77,26 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-03-MODELS
+## BACKEND-04-CRUD
 
-- Create a model named Action in models.py
+- Update your model by adding field to Action, description
 ```
 class Action(models.Model):
-    text = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
 ```
 
-- Do a makemigrations
-- Do a migrate
+- Create CRUD Views, refer to views.py
+- Create CRUD URLS in accordance to the CRUD views
+- Create CRUD Templates
+- Some CRUD such as Create and Update needed forms
 
+- In such create a forms.py
+- There are two ways to validate data via forms
+    - Normal forms
+    - Model Forms
+- [Read here](https://docs.djangoproject.com/en/3.2/topics/forms/)
 
-- Register the model in the admin
-```
-admin.site.register(models.Admin)
-```
-
-- Two ways to add items in the model
-    - command line
-    - through admin
-
-- In the views.py, change the to_do static data to:
-```
-    'to_do': models.Activity.objects.all()
-```
-- This returns a list of object in the template therefore instead of {{ t }} do {{ t.text }}
+- This has been a long topic :)
 
 ### TADA!
 

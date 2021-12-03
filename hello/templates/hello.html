@@ -11,13 +11,27 @@
 </head>
 <body>
     <!-- <h1>TO DO APP</h1> -->
-    <div class="container text-center">
-        <h1>TO DO APP of {{ name }} </h1>
-        <ul>
+    <center><h2> To do app : {{ name }} </h2></center>
+    <br>
+    <center><a href="{% url 'hello-add' %}">Add Action </a></center>
+    <br>
+    <div class="d-flex justify-content-center">
+        <table class='text-center'>
+            <tr>
+             <th> <h2> Activities </h2> </th>
+             <th><h2> Actions </h2></th>
+            <tr>
+
             {% for t in to_do %}
-                <li><h3>{{ t }}</h3></li>
-                <!-- <li><h3>{{ t.text }}</h3></li> -->
+            <tr>
+                <td><h3>{{ t.text }}</h3></td>
+                <td>
+                    <a href="{% url 'hello-view' t.pk %}"> View</a>
+                    <a href="{% url 'hello-update' t.pk %}"> Update</a>
+                    <a href="{% url 'hello-delete' t.pk %}">Delete</a>
+                </td>
+            </tr>
             {% endfor %}
-        </ul>
+        </table>
     </div>
 </body>
