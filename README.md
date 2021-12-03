@@ -77,57 +77,9 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-01-HELLO WORLD
+## BACKEND-02-HELLO-WORLD
 
-- Create your app
-In main directory (gdsc-plm-backend/)
-
-```
-django-admin startapp hello
-```
-
-- It should contain the basics files of an app
-```
-e.g
-hello\
-    migrations\
-    admin.py
-    ...etc
-```
-
-- Put your app in the settings.py INSTALLED_APPS
-```
-INSTALLED_APPS = [
-    ...
-    hello
-]
-```
-
-- Create a urls.py on your hello folder
-- It should contains this
-```
-from django.urls import path
-
-urlpatterns = [
-    # put your routes here
-]
-
-```
-
-- To be recognized hello app urls it should be detected in the urls.py on the config folder
-- It can be done like this
-```
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('hello/', include('hello.urls')) # this includes all the routes provided by the hello app
-]
-```
-
-- Now we had our routes file prepared, lets make some views
-- Create a view function named hello
+- In the [previous](https://github.com/Kiel-Hyre/gdsc-plm-backend/tree/backend-01-hello-world), we learn about basic routing
 ```
 from django.http import HttpResponse
 
@@ -135,18 +87,40 @@ def hello(request):
     return HttpResponse("Hello World")
 ```
 
-- Create a route based on that view
+- Now we modify it to render a template
+
+- In the hello folder, create a new folder name templates
+- This will contain all the html files you will use on the app
+- Create a hello.html file
 ```
-hello/urls.py
-
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('index/', views.hello, name='hello-index')
-]
+    hello\
+        templates\
+            hello.html
 ```
 
-### TADA YOUR FIRST APP!
+- In the views
+- import the [render](https://docs.djangoproject.com/en/3.2/topics/http/shortcuts/#django.shortcuts.render) function from django.shorcuts
+- change the method of the hello function
+
+```
+def hello(request):
+    return render(request, 'hello.html')
+```
+
+- put some code in your html file
+```
+    <h1>TO DO APP</h1>
+```
+
+- run server for testing
+- It should show the TO DO APP
+
+### More versioning
+- Static datas
+- By arguments render function had optional argument called context
+- Context is empty dictionary by default, once filled up, those data can be used in the template through template tags
+
+
+### TADA!
 
 - Run your server
