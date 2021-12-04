@@ -77,8 +77,13 @@ To create in the same base of gdsc-plm-backend do:
     python3 manage.py runserver (port) # default is 8000
 ```
 
-## BACKEND-06-CLASS-BASED-VIEWS
-- Transfer all function based to a class based one!
+## BACKEND-07-LETS-APPLY-IT
+- Finally the last part of this activity
+- In this segment, we will apply the api through ajax
+- No session authentication needed to visualize a separation between the frontend and backend
+
+- On the side note, some of the method were needing a header, in which case Django requires a CRSFToken,
+which can be get through crsf_token tag
 
 
 ### TADA!
