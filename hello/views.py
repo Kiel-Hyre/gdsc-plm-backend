@@ -39,15 +39,21 @@ def hello(request):
 
     # v6
     # by default once the page was loaded it tries a GET METHOD
-    if request.method == 'GET':
-        # raise Exception(True)
+    # if request.method == 'GET':
+    #     # raise Exception(True)
 
-        context = {
-            'name': 'Miguel',
-            'to_do': models.Action.objects.all(),
-            # 'to_do': models.Action.objects.all().values_list('text', flat=True),
-        }
-        return render(request, 'hello.html', context)
+    #     context = {
+    #         'name': 'Miguel',
+    #         'to_do': models.Action.objects.all(),
+    #         # 'to_do': models.Action.objects.all().values_list('text', flat=True),
+    #     }
+    #     return render(request, 'hello.html', context)
+
+    # v7
+    context = {
+        'create_or_update': forms.ActionAddForm()
+    }
+    return render(request, 'hello.html', context)
 
 def hello_view(request, pk):
     if request.method == 'GET':

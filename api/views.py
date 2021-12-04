@@ -8,6 +8,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.parsers import JSONParser
 
+from rest_framework.permissions import AllowAny
+
 from . import models
 from . import serializers # note were not using forms
 
@@ -54,6 +56,7 @@ class APIGetView(APIView):
 # FOR SOME REASON api_view decorator is bugging therefore use this
 
 class APIDeleteView(APIView):
+
     def delete(self, request, pk):
         obj = get_object_or_404(models.Action, pk=pk)
         obj.delete()
@@ -69,7 +72,7 @@ class APICreateView(APIView):
 
 
 class APIUpdateView(APIView):
-    def post(self, request, pk):
+    def put(self, request, pk):
         obj = get_object_or_404(models.Action, pk=pk)
         serializer = serializers.ActionUpdateSerializer(obj, data=request.data)
         serializer.is_valid(raise_exception=True)
